@@ -1,11 +1,13 @@
 #ifndef USERS_H
 #define USERS_H
 
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <stdint.h>
+#include <array>
 
-typedef uint32_t UIDt;
-#define BADUSER (UIDt)-1
+using UIDt = std::array<uint8_t, 10>;
+constexpr auto BADUSER = std::array<uint8_t, 10>{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+
 
 typedef int IDXt;
 #define N_USERS 50
@@ -13,16 +15,20 @@ typedef int IDXt;
 
 class User {
 private:
-    UIDt UID;
+    UIDt UID = BADUSER;
 public:
     explicit User(UIDt uid) {UID = uid;}
-    User(void) {UID = BADUSER;}
+    User() = default;
     bool operator == (const User &other){
       return other.UID == UID;
     }
     void show();
     UIDt getUID() {return UID;}
-    static UIDt fromRaw(byte* b){return (UIDt)*((uint32_t*)b);}
+    static UIDt fromRaw(const uint8_t* b){
+      auto id = std::array<uint8_t, 10>{};
+      std::copy(b, b + 10, id.begin());
+      return id;
+    }
 };
 
 class Users {
