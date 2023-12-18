@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+
+build
+*.cflags
+*.config
+*.cxxflags
+*.files
+*.includes
+*.creator*
+.qtc_clangd/
