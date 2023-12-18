@@ -7,6 +7,7 @@ add_library(
     taggsystem/users.cpp
 )
 
+enable_testing()
+
 add_subdirectory(test)
 
-enable_testing()
