@@ -20,6 +20,8 @@ include(GoogleTest)
 add_executable(
     user_test
     user_test.cpp
+    state_test.cpp
+    testclasses.cpp
 )
 
 target_link_libraries(
@@ -31,7 +33,7 @@ target_link_libraries(
 target_include_directories(
     user_test
     PRIVATE
-    ../taggsystem
+    ../src
 )
 
 add_test(user_test user_test)

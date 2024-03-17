@@ -4,7 +4,8 @@ cmake_minimum_required(VERSION 3.20)
 
 add_library(
     taggsystem
-    taggsystem/users.cpp
+    src/users.cpp
+    src/state.cpp
 )
 
 enable_testing()
