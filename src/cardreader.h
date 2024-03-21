@@ -9,6 +9,8 @@ public:
 
     CardReader(int ss, int rst);
 
+    void init();
+
     /// On success, @return true and save the read id, on failure return false
     bool tryRead();
 
